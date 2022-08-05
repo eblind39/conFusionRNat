@@ -1,23 +1,18 @@
 import React from "react";
-import {
-  StyleSheet,
-  FlatList,
-  ListRenderItem,
-  StatusBar,
-  Text,
-} from "react-native";
+import { StyleSheet, FlatList, ListRenderItem, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ListItem, Avatar } from "react-native-elements";
 import { Dish } from "../types/dish";
 
 interface Props {
   dishes: Dish[];
+  onPress(dishId: number): void;
 }
 
-const Menu = ({ dishes }: Props) => {
+const Menu = ({ dishes, onPress }: Props) => {
   const renderMenuItem: ListRenderItem<Dish> = (dish) => {
     return (
-      <ListItem key={dish.item.id}>
+      <ListItem key={dish.item.id} onPress={() => onPress(dish.item.id)}>
         <ListItem.Content>
           <Avatar
             size={64}
@@ -35,7 +30,6 @@ const Menu = ({ dishes }: Props) => {
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <Text>Ernst</Text>
       <FlatList
         data={dishes}
         renderItem={renderMenuItem}
