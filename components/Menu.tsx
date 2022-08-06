@@ -3,16 +3,16 @@ import { StyleSheet, FlatList, ListRenderItem, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ListItem, Avatar } from "react-native-elements";
 import { Dish } from "../types/dish";
+import { DISHES } from "../shared/dishes";
+import { navigate } from "../services/NavigationService";
 
-interface Props {
-  dishes: Dish[];
-  onPress(dishId: number): void;
-}
-
-const Menu = ({ dishes, onPress }: Props) => {
+const Menu = () => {
   const renderMenuItem: ListRenderItem<Dish> = (dish) => {
     return (
-      <ListItem key={dish.item.id} onPress={() => onPress(dish.item.id)}>
+      <ListItem
+        key={dish.item.id}
+        onPress={() => navigate("DishDetail", { dishId: dish.item.id })}
+      >
         <ListItem.Content>
           <Avatar
             size={64}
@@ -31,13 +31,15 @@ const Menu = ({ dishes, onPress }: Props) => {
   return (
     <SafeAreaProvider style={styles.container}>
       <FlatList
-        data={dishes}
+        data={DISHES}
         renderItem={renderMenuItem}
         keyExtractor={(dish) => dish.id.toString()}
       ></FlatList>
     </SafeAreaProvider>
   );
 };
+
+Menu.title = "Menu";
 
 const styles = StyleSheet.create({
   container: {
