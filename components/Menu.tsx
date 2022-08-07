@@ -4,14 +4,28 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ListItem, Avatar } from "react-native-elements";
 import { Dish } from "../types/dish";
 import { DISHES } from "../shared/dishes";
-import { navigate } from "../services/NavigationService";
+// import { navigate } from "../services/NavigationService";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types/stack";
+import { useNavigation } from "@react-navigation/native";
 
-const Menu = () => {
+type MenuProps = NativeStackNavigationProp<RootStackParamList, "Menu">;
+
+const Menu = (props: MenuProps) => {
+  const navigation = useNavigation<MenuProps>();
+
   const renderMenuItem: ListRenderItem<Dish> = (dish) => {
     return (
       <ListItem
         key={dish.item.id}
-        onPress={() => navigate("DishDetail", { dishId: dish.item.id })}
+        onPress={() =>
+          navigation.navigate<"DishDetail">("DishDetail", {
+            dishId: dish.item.id,
+          })
+        }
       >
         <ListItem.Content>
           <Avatar

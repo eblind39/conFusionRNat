@@ -3,17 +3,23 @@ import { View, Text } from "react-native";
 import { Card } from "react-native-elements";
 import { Dish } from "../types/dish";
 import { DISHES } from "../shared/dishes";
-import { getParam } from "../services/NavigationService";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types/stack";
+import { useRoute } from "@react-navigation/native";
 
 interface Props {
   dish: Dish;
 }
 
-const DishDetail = ({ dish }: Props) => {
+type DishDetailProps = NativeStackScreenProps<RootStackParamList, "DishDetail">;
+type DishDetailScreenRouteProp = DishDetailProps["route"];
+
+const DishDetail = (props: DishDetailProps) => {
   const [dishId, setDishId] = useState<number>(-1);
+  const route = useRoute<DishDetailScreenRouteProp>();
 
   useEffect(() => {
-    setDishId(getParam("dishId", "-1"));
+    setDishId(route.params.dishId);
   }, []);
 
   const RenderDish = ({ dish }: Props) => {
@@ -34,7 +40,7 @@ const DishDetail = ({ dish }: Props) => {
     );
   };
 
-  return <RenderDish dish={DISHES[+dishId]} />;
+  return <RenderDish dish={DISHES.filter((dish) => dish.id === dishId)[0]} />;
 };
 
 DishDetail.title = "Dish Details";
