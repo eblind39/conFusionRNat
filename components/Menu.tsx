@@ -18,7 +18,7 @@ const Menu = () => {
             size={64}
             rounded
             source={{
-              uri: "https://i.inews.co.uk/content/uploads/2021/02/PRI_181328540-760x760.jpg",
+              uri: `${dish.item.image}`,
             }}
           />
           <ListItem.Title>{dish.item.name}</ListItem.Title>

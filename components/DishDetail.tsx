@@ -24,7 +24,7 @@ const DishDetail = ({ dish }: Props) => {
         <Card.Image
           style={{ padding: 0 }}
           source={{
-            uri: "https://i.inews.co.uk/content/uploads/2021/02/PRI_181328540-760x760.jpg",
+            uri: `${dish.image}`,
           }}
         />
         <Text style={{ margin: 10 }}>{dish.description}</Text>

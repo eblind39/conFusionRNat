@@ -4,7 +4,8 @@ const DISHES: Dish[] = [
   {
     id: 0,
     name: "Uthappizza",
-    image: "images/uthappizza.png",
+    image:
+      "https://raw.githubusercontent.com/eblind39/conFusionRNat/main/components/images/uthappizza.png",
     category: "mains",
     label: "Hot",
     price: "4.99",
@@ -15,7 +16,8 @@ const DISHES: Dish[] = [
   {
     id: 1,
     name: "Zucchipakoda",
-    image: "images/zucchipakoda.png",
+    image:
+      "https://raw.githubusercontent.com/eblind39/conFusionRNat/main/components/images/zucchipakoda.png",
     category: "appetizer",
     label: "",
     price: "1.99",
@@ -26,7 +28,8 @@ const DISHES: Dish[] = [
   {
     id: 2,
     name: "Vadonut",
-    image: "images/vadonut.png",
+    image:
+      "https://raw.githubusercontent.com/eblind39/conFusionRNat/main/components/images/vadonut.png",
     category: "appetizer",
     label: "New",
     price: "1.99",
@@ -37,7 +40,8 @@ const DISHES: Dish[] = [
   {
     id: 3,
     name: "ElaiCheese Cake",
-    image: "images/elaicheesecake.png",
+    image:
+      "https://raw.githubusercontent.com/eblind39/conFusionRNat/main/components/images/elaicheesecake.png",
     category: "dessert",
     label: "",
     price: "2.99",
