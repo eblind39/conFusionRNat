@@ -7,8 +7,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./types/stack";
 import "react-native-gesture-handler";
 import Home from "./components/Home";
-import Menu from "./components/Menu";
+import MenuScreen from "./components/Menu";
 import DishDetail from "./components/DishDetail";
+import Contact from "./components/Contact";
+import About from "./components/About";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -16,13 +18,17 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function Root() {
   return (
     <Stack.Navigator
-      initialRouteName="Menu"
+      initialRouteName="MenuScreen"
       screenOptions={{
         headerTintColor: "#fff",
         headerStyle: { backgroundColor: "tomato" },
       }}
     >
-      <Stack.Screen name="Menu" component={Menu} options={{ title: "Menu" }} />
+      <Stack.Screen
+        name="MenuScreen"
+        component={MenuScreen}
+        options={{ title: "Menu" }}
+      />
       <Stack.Screen
         name="DishDetail"
         component={DishDetail}
@@ -38,7 +44,9 @@ const App = () => {
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="About Us" component={About} />
           <Drawer.Screen name="Menu" component={Root} />
+          <Drawer.Screen name="Contact Us" component={Contact} />
         </Drawer.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

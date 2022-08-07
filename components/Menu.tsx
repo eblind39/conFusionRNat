@@ -14,7 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 
 type MenuProps = NativeStackNavigationProp<RootStackParamList, "Menu">;
 
-const Menu = (props: MenuProps) => {
+const MenuScreen = (props: MenuProps) => {
   const navigation = useNavigation<MenuProps>();
 
   const renderMenuItem: ListRenderItem<Dish> = (dish) => {
@@ -53,7 +53,7 @@ const Menu = (props: MenuProps) => {
   );
 };
 
-Menu.title = "Menu";
+MenuScreen.title = "Menu";
 
 const styles = StyleSheet.create({
   container: {
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default MenuScreen;
